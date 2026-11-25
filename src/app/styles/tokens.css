@@ -1,0 +1,78 @@
+/* ────────────────────────────────────────────────────────────────
+   Nazarabad Shop — Design Tokens (single source of design truth)
+   Refined green identity per brand direction:
+   green dominates · cream warms · orange converts
+   ──────────────────────────────────────────────────────────────── */
+:root {
+  /* ── Brand greens ─────────────────────────────── */
+  --green-950: #04302b;
+  --green-900: #064e45; /* primary dark green */
+  --green-850: #073f39; /* deep green (hero → footer surfaces) */
+  --green-800: #0b5449;
+  --green-700: #0d6856; /* secondary green */
+  --green-600: #15725f;
+  --fresh-500: #43a66d; /* fresh green — positive accents */
+  --fresh-400: #55b57c;
+  --soft-green: #dcefe2; /* soft green surfaces */
+  --mint-300: #bcd4b5;
+  --mint-400: #a9c6a2;
+
+  /* ── Warm neutrals ────────────────────────────── */
+  --cream-100: #f8eddf; /* warm cream */
+  --cream-50: #fff8ee; /* light cream — page background */
+  --beige-200: #f1e0c8;
+  --beige-300: #ebd7bd;
+
+  /* ── Accent ───────────────────────────────────── */
+  --orange-500: #f4773d; /* brand orange — primary actions */
+  --orange-600: #e05f1d;
+  --orange-400: #f68d4f;
+  --soft-orange: #f8b58d;
+  --coral-500: #e96d50;
+
+  /* ── Text ─────────────────────────────────────── */
+  --ink-900: #173c35; /* dark text */
+  --ink-700: #274d49;
+  --ink-600: #52655e;
+  --ink-500: #718078; /* secondary text */
+  --cream-text: #fff8ee;
+  --cream-text-dim: rgb(255 248 238 / 0.72);
+
+  /* ── Semantic ─────────────────────────────────── */
+  --color-danger: #d6583b;
+  --color-success: #2b7050;
+
+  /* ── Shape & depth ────────────────────────────── */
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-2xl: 2.5rem;
+  --radius-3xl: 3rem;
+
+  --shadow-soft: 0 10px 30px -14px rgb(6 78 69 / 0.18);
+  --shadow-card: 0 24px 55px -22px rgb(6 78 69 / 0.28);
+  --shadow-deep: 0 34px 70px -28px rgb(4 48 43 / 0.55);
+  --shadow-orange: 0 16px 38px -12px rgb(244 119 61 / 0.5);
+
+  /* ── Rhythm ───────────────────────────────────── */
+  --container: 72.5rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --nav-h: 4.75rem;
+  --section-y: clamp(3.5rem, 8vw, 6.5rem);
+  --font-sans: "Shoor", "Vazirmatn", "Segoe UI", Tahoma, system-ui, sans-serif;
+  --font-display: "ShoorRounded", "Lalezar", "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+
+  /* ── Motion ───────────────────────────────────── */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.2s;
+  --dur-med: 0.45s;
+  --dur-slow: 0.8s;
+
+  /* ── Z-index scale ────────────────────────────── */
+  --z-decor: 0;
+  --z-content: 1;
+  --z-float: 2;
+  --z-nav: 50;
+  --z-menu: 60;
+}

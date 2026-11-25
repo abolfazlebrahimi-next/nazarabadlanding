@@ -1,0 +1,128 @@
+/* Shoor — brand Persian typeface (client-supplied), self-hosted.
+   Weight ranges map the family's 5 cuts onto the design's 400–900 scale. */
+@font-face {
+  font-family: "Shoor";
+  src: url("/fonts/Shoor-Thin.woff2") format("woff2");
+  font-weight: 100 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shoor";
+  src: url("/fonts/Shoor-Regular.woff2") format("woff2");
+  font-weight: 300 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shoor";
+  src: url("/fonts/Shoor-Medium.woff2") format("woff2");
+  font-weight: 500 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shoor";
+  src: url("/fonts/Shoor-ExtraBold.woff2") format("woff2");
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shoor";
+  src: url("/fonts/Shoor-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ShoorRounded — rounded cut of the brand face for display headings
+   (replaces Lalezar as the primary display face). */
+@font-face {
+  font-family: "ShoorRounded";
+  src: url("/fonts/ShoorRounded-Thin.woff2") format("woff2");
+  font-weight: 100 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ShoorRounded";
+  src: url("/fonts/ShoorRounded-Regular.woff2") format("woff2");
+  font-weight: 300 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ShoorRounded";
+  src: url("/fonts/ShoorRounded-Medium.woff2") format("woff2");
+  font-weight: 500 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ShoorRounded";
+  src: url("/fonts/ShoorRounded-ExtraBold.woff2") format("woff2");
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ShoorRounded";
+  src: url("/fonts/ShoorRounded-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Vazirmatn — Persian typeface, self-hosted for reliability (fallback) */
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Lalezar — playful display face for countdown digits & price accents */
+@font-face {
+  font-family: "Lalezar";
+  src: url("/fonts/Lalezar-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

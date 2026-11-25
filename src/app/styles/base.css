@@ -1,0 +1,308 @@
+/* ────────────────────────────────────────────────────────────────
+   Base: reset, typography, primitives (buttons, container, section,
+   section-head, blobs, curves, chips, accessibility helpers)
+   ──────────────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+  /* account for fixed nav on anchor jumps */
+  scroll-padding-top: calc(var(--nav-h) + 0.75rem);
+}
+
+/* Decorative elements intentionally poke past section edges (blobs, arcs,
+   sparkles) — clip horizontal overflow globally so RTL pages never gain a
+   horizontal scrollbar, while vertical clipping stays untouched. */
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--cream-50);
+  color: var(--ink-900);
+  line-height: 1.75;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout primitives ------------------------------------------------ */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+/* Typography scale ------------------------------------------------- */
+h1, h2, h3, h4 {
+  line-height: 1.35;
+  font-weight: 800;
+  color: inherit;
+}
+
+/* Buttons ---------------------------------------------------------- */
+.btn {
+  --btn-bg: var(--green-900);
+  --btn-fg: var(--cream-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+.btn svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex-shrink: 0;
+}
+.btn--primary {
+  background: var(--orange-500);
+  color: #fff;
+  box-shadow: var(--shadow-orange);
+}
+.btn--primary:hover {
+  background: var(--orange-600);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 42px -12px rgb(224 95 29 / 0.55);
+}
+.btn--primary:active {
+  transform: translateY(0) scale(0.98);
+}
+.btn--primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.btn--ghost {
+  background: rgb(255 255 255 / 0.06);
+  color: rgb(255 248 238 / 0.92);
+  border-color: rgb(255 248 238 / 0.28);
+  backdrop-filter: blur(6px);
+  font-weight: 600;
+}
+.btn--ghost:hover {
+  background: rgb(255 255 255 / 0.14);
+  border-color: rgb(255 248 238 / 0.5);
+  transform: translateY(-2px);
+  color: var(--cream-text);
+}
+.btn--outline {
+  background: transparent;
+  color: var(--green-900);
+  border-color: rgb(6 78 69 / 0.35);
+}
+.btn--outline:hover {
+  background: rgb(6 78 69 / 0.06);
+  transform: translateY(-2px);
+}
+.btn--lg {
+  padding: 1rem 2rem;
+  font-size: 1.08rem;
+  border-radius: var(--radius-lg);
+}
+.btn--sm {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.92rem;
+  border-radius: 1rem;
+}
+
+/* Spinner ---------------------------------------------------------- */
+.spinner {
+  width: 1.1em;
+  height: 1.1em;
+  border-radius: 50%;
+  border: 2.5px solid rgb(255 255 255 / 0.4);
+  border-top-color: #fff;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Section head ------------------------------------------------------ */
+.section-head {
+  max-width: 46rem;
+  margin-block-end: clamp(2rem, 4vw, 3rem);
+}
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+.section-head--side {
+  margin-block-end: 1.6rem;
+}
+.section-head__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: rgb(13 104 86 / 0.09);
+  color: var(--green-700);
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-block-end: 1.1rem;
+}
+.section-head__eyebrow svg {
+  width: 1.05em;
+  height: 1.05em;
+}
+.section-head__title {
+  font-size: clamp(1.55rem, 3.6vw, 2.3rem);
+  font-weight: 900;
+  color: var(--ink-900);
+  margin-block-end: 0.7rem;
+}
+.section-head__desc {
+  font-size: clamp(0.98rem, 1.6vw, 1.1rem);
+  color: var(--ink-500);
+  max-width: 40rem;
+}
+.section-head--center .section-head__desc {
+  margin-inline: auto;
+}
+.section-head--dark .section-head__eyebrow {
+  background: rgb(255 248 238 / 0.1);
+  color: var(--soft-orange);
+}
+.section-head--dark .section-head__title {
+  color: var(--cream-text);
+}
+.section-head--dark .section-head__desc {
+  color: var(--cream-text-dim);
+}
+
+/* Blobs (soft decorative glows) ------------------------------------ */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.blob--mint {
+  background: rgb(67 166 109 / 0.35);
+}
+.blob--orange {
+  background: rgb(244 119 61 / 0.28);
+}
+.blob--cream {
+  background: rgb(248 237 223 / 0.35);
+}
+
+/* Curves (organic section transitions) ------------------------------ */
+.curve {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  line-height: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.curve svg {
+  width: 100%;
+  height: clamp(40px, 8vw, 110px);
+  display: block;
+}
+.curve--top {
+  bottom: auto;
+  top: -1px;
+}
+.curve--top svg {
+  transform: scaleY(-1);
+}
+.curve--bottom svg {
+  transform: none;
+}
+
+/* Skip link (a11y) -------------------------------------------------- */
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  inset-inline-start: 50%;
+  transform: translate(50%, -300%);
+  z-index: 100;
+  background: var(--orange-500);
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.skip-link:focus-visible {
+  transform: translate(50%, 0);
+}
+
+/* Focus visibility --------------------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--orange-400);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.btn:focus-visible,
+.nav__burger:focus-visible,
+.role-pill:focus-visible,
+.faq-item__btn:focus-visible {
+  outline-offset: 3px;
+}
+
+/* Reduced motion ----------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* No-JS / pre-hydration safety ---------------------------------------
+   Scroll-reveal elements are hidden by inline styles until framer-motion
+   hydrates. If scripting is unavailable, force everything visible so the
+   full page content stays reachable (SEO, readers, crawlers, no-JS). */
+@media (scripting: none) {
+  * {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
+
+/* Small screens: tighten buttons ------------------------------------- */
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.72rem 1.3rem;
+    font-size: 0.95rem;
+  }
+  .btn--lg {
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+}
