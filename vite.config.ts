@@ -27,6 +27,14 @@ export default defineConfig(({ mode }) => {
       host: "0.0.0.0",
       port: 3000,
       allowedHosts: true,
+      proxy: {
+        // Dev only: forward /api/* to the live PHP backend (same-origin from the browser).
+        "/api": {
+          target: "https://nazarabadshop.ir",
+          changeOrigin: true,
+          secure: true,
+        },
+      },
     },
     preview: {
       host: "0.0.0.0",

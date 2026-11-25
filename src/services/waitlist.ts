@@ -20,28 +20,31 @@ export interface WaitlistApi {
 /* ──────────────────────────────────────────────────────────────────────────
  * API base URL — centralized configuration.
  *
- * Set the build-time variable (Vite):
- *   VITE_API_BASE_URL=https://api.example.com
+ * VITE_API_BASE_URL is the PHP API root, WITHOUT the trailing /api/v1 part:
+ *   production:  https://nazarabadshop.ir/api        (.env.production)
+ *   development: /api                                (proxied by vite.config.ts)
  *
- * The value must match an origin listed in the backend's
- * CORS_ALLOWED_ORIGINS (no trailing slash, exact scheme + host + port).
+ * When unset, the default is the same-origin path "/api", which matches the
+ * production layout (frontend and API both served from nazarabadshop.ir).
  *
- * When no base URL is configured, submissions go to the relative
- * path /api/waitlist (same origin). This SPA has no server of its own,
- * so that path only works when a reverse proxy routes it to a backend.
+ * Final endpoint = `${API_BASE}/v1/waitlist/register`, e.g.
+ *   https://nazarabadshop.ir/api/v1/waitlist/register
  * ──────────────────────────────────────────────────────────────────────── */
+
+const DEFAULT_API_BASE = "/api";
 
 function resolveApiBase(): string {
   const raw = import.meta.env.VITE_API_BASE_URL;
-  return typeof raw === "string" ? raw.trim().replace(/\/+$/, "") : "";
+  const value = typeof raw === "string" ? raw.trim().replace(/\/+$/, "") : "";
+  // Accept a mistakenly configured value that already ends with /api or /api/v1
+  // so the path never ends up as /api/api/v1/...
+  return value.replace(/\/api(\/v1)?$/, "/api") || DEFAULT_API_BASE;
 }
 
 const API_BASE = resolveApiBase();
 
-/** Backend contract: POST {base}/api/v1/waitlist/register (PHP/MySQL). */
-const REGISTER_ENDPOINT = API_BASE
-  ? `${API_BASE}/api/v1/waitlist/register`
-  : "/api/waitlist";
+/** Backend contract: POST {API_BASE}/v1/waitlist/register (PHP/MySQL). */
+const REGISTER_ENDPOINT = `${API_BASE}/v1/waitlist/register`;
 
 /** UI role ids → backend canonical roles (PHP config: ROLES). */
 const ROLE_TO_BACKEND: Record<UserRole, string> = {
@@ -74,6 +77,7 @@ async function readErrorMessage(res: Response): Promise<string | undefined> {
 }
 
 const DEFAULT_ERRORS = {
+  notFound: "سرویس ثبت‌نام در دسترس نیست؛ لطفاً چند دقیقه‌ی دیگر دوباره تلاش کنید.",
   invalid: "خطا در پردازش اطلاعات؛ لطفاً موارد وارد‌شده را بررسی و دوباره تلاش کنید.",
   rateLimit: "درخواست‌های شما بیش از حد مجاز است؛ چند دقیقه‌ی دیگر دوباره تلاش کنید.",
   server: "خطای سرور؛ لطفاً چند لحظه‌ی دیگر دوباره تلاش کنید.",
@@ -105,10 +109,17 @@ export class RestWaitlistApi implements WaitlistApi {
         body: JSON.stringify(payload),
       });
 
-      if (res.status === 201) return { status: "ok" };
+      if (res.status === 200 || res.status === 201) return { status: "ok" };
       if (res.status === 409) return { status: "duplicate" };
 
       const message = await readErrorMessage(res);
+      if (import.meta.env.DEV) {
+        console.debug(`[waitlist] HTTP ${res.status} from ${this.endpoint}`, message);
+      }
+
+      if (res.status === 404) {
+        return { status: "error", message: DEFAULT_ERRORS.notFound };
+      }
       if (res.status === 429) {
         return { status: "error", message: message ?? DEFAULT_ERRORS.rateLimit };
       }
@@ -117,7 +128,8 @@ export class RestWaitlistApi implements WaitlistApi {
       }
 
       return { status: "error", message: message ?? DEFAULT_ERRORS.server };
-    } catch {
+    } catch (error) {
+      if (import.meta.env.DEV) console.debug("[waitlist] network error", error);
       return { status: "error", message: DEFAULT_ERRORS.network };
     }
   }
