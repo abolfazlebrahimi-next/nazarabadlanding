@@ -10,9 +10,10 @@
   text-decoration: none;
 }
 .logo__mark {
-  width: 2.7rem;
   height: 2.7rem;
+  width: auto;
   flex-shrink: 0;
+  object-fit: contain;
 }
 .logo__text {
   display: flex;
@@ -186,7 +187,6 @@
 }
 @media (max-width: 480px) {
   .logo__mark {
-    width: 2.2rem;
     height: 2.2rem;
   }
   .logo__name {
