@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CalendarClock, Sparkles } from "lucide-react";
 import { useCountdown } from "@/hooks/use-countdown";

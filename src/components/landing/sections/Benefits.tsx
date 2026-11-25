@@ -1,5 +1,3 @@
-"use client";
-
 import { Store, ShoppingBag, PackageCheck, Bike, type LucideIcon } from "lucide-react";
 import { RevealGroup, RevealItem } from "@/components/landing/ui/Reveal";
 import { BENEFITS } from "@/data/content";

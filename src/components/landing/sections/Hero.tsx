@@ -1,7 +1,4 @@
-"use client";
-
 import { useRef } from "react";
-import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowLeft, Sparkles } from "lucide-react";
 import { Countdown } from "./Countdown";
@@ -159,13 +156,12 @@ export function Hero() {
                   : { delay: 0.5, duration: 1.1, times: [0, 0.55, 1], ease: EASE }
               }
             >
-              <Image
+              <img
                 src={heroImage}
                 alt="مشتری نظرآباد شاپ با کیف‌های خرید، فروشگاه شهر و پیک موتوری روی موتور نارنجی"
                 width={768}
                 height={1344}
-                priority
-                placeholder="blur"
+                fetchPriority="high"
                 sizes="(max-width: 1024px) 92vw, 460px"
               />
             </motion.div>

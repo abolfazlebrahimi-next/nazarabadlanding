@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/landing/ui/Reveal";
 import { SectionHead } from "@/components/landing/ui/SectionHead";
@@ -37,11 +34,10 @@ export function FeaturedProducts() {
                 onClick={() => trackEvent("product_card_click", { product: product.name })}
               >
                 <div className="product-card__media">
-                  <Image
+                  <img
                     src={product.image}
                     alt={product.alt}
                     loading="lazy"
-                    placeholder="blur"
                     sizes="(max-width: 640px) 46vw, (max-width: 1024px) 34vw, 250px"
                     className="product-card__img"
                   />

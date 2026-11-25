@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
 import { SectionHead } from "@/components/landing/ui/SectionHead";
@@ -29,11 +26,10 @@ export function WhyNazarabad() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="why__figure">
-              <Image
+              <img
                 src={benefitsImage}
                 alt={WHY.imageAlt}
                 loading="lazy"
-                placeholder="blur"
                 sizes="(max-width: 1024px) 92vw, 560px"
               />
             </div>

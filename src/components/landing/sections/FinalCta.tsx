@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
@@ -20,7 +18,6 @@ import { isValidIranianMobile } from "@/lib/phone";
 import { trackEvent } from "@/lib/analytics";
 import { useWaitlistRole } from "@/store/waitlist-role";
 import { EASE } from "@/lib/motion";
-import Image from "next/image";
 import customerImage from "@/assets/landing/char-customer.webp";
 
 type FormStatus = "idle" | "loading" | "success";
@@ -107,11 +104,10 @@ export function FinalCta() {
           </Reveal>
 
           <Reveal delay={0.12} className="waitlist__figure">
-            <Image
+            <img
               src={customerImage}
               alt="مشتری خوشحال نظرآباد شاپ با کیف‌های خرید"
               loading="lazy"
-              placeholder="blur"
               sizes="(max-width: 900px) 60vw, 280px"
             />
           </Reveal>

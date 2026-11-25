@@ -20,38 +20,19 @@ export interface WaitlistApi {
 /* ──────────────────────────────────────────────────────────────────────────
  * API base URL — centralized configuration.
  *
- * Production (cPanel PHP backend): set ONE of these build-time variables:
- *   • Vite landing build:            VITE_API_BASE_URL=https://api.example.com
- *   • Next.js landing build:         NEXT_PUBLIC_API_BASE_URL=https://api.example.com
+ * Set the build-time variable (Vite):
+ *   VITE_API_BASE_URL=https://api.example.com
  *
  * The value must match an origin listed in the backend's
  * CORS_ALLOWED_ORIGINS (no trailing slash, exact scheme + host + port).
  *
- * When no base URL is configured (local preview / sandbox), submissions
- * fall back to the built-in Next.js route (/api/waitlist) so the form
- * keeps working without external infrastructure.
+ * When no base URL is configured, submissions go to the relative
+ * path /api/waitlist (same origin). This SPA has no server of its own,
+ * so that path only works when a reverse proxy routes it to a backend.
  * ──────────────────────────────────────────────────────────────────────── */
 
-type EnvLike = { env?: Record<string, string | undefined> };
-
 function resolveApiBase(): string {
-  let raw: string | undefined;
-  try {
-    raw = (import.meta as unknown as EnvLike | undefined)?.env?.VITE_API_BASE_URL;
-  } catch {
-    raw = undefined; // import.meta.env is not available in this bundle target
-  }
-  if (typeof raw !== "string" || raw === "") {
-    // NOTE: the literal `process.env.NEXT_PUBLIC_*` access is required —
-    // bundlers (Turbopack/webpack) inline NEXT_PUBLIC_* only when they can
-    // statically see the expression. An indirect lookup would silently
-    // resolve to undefined in the browser.
-    try {
-      raw = process.env.NEXT_PUBLIC_API_BASE_URL;
-    } catch {
-      raw = undefined; // process is not defined in this bundle target
-    }
-  }
+  const raw = import.meta.env.VITE_API_BASE_URL;
   return typeof raw === "string" ? raw.trim().replace(/\/+$/, "") : "";
 }
 

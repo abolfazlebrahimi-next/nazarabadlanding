@@ -28,7 +28,7 @@ export function trackEvent(name: string, detail?: EventDetail): void {
   const dataLayer = (window as { dataLayer?: unknown[] }).dataLayer;
   if (Array.isArray(dataLayer)) dataLayer.push(payload);
 
-  if (process.env.NODE_ENV !== "production") {
+  if (import.meta.env.DEV) {
     console.debug(`[analytics] ${name}`, detail ?? {});
   }
 

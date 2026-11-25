@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Bike, PackageCheck, Route, UserRoundCheck, ArrowLeft } from "lucide-react";
 import { Reveal } from "@/components/landing/ui/Reveal";
@@ -32,11 +29,10 @@ export function CourierPartner() {
           >
             <span className="courier__ring" aria-hidden="true" />
             <div className="courier__figure">
-              <Image
+              <img
                 src={courierImage}
                 alt="پیک موتوری نظرآباد شاپ با کلاه‌کاسه‌ی سبز و جعبه‌ی تحویل"
                 loading="lazy"
-                placeholder="blur"
                 sizes="(max-width: 1024px) 78vw, 400px"
               />
             </div>

@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ClipboardList,
@@ -99,11 +96,10 @@ export function StorePartner() {
             </div>
 
             <div className="store__figure">
-              <Image
+              <img
                 src={ownerImage}
                 alt="فروشنده‌ی نظرآباد شاپ با روپوش سبز در فروشگاه"
                 loading="lazy"
-                placeholder="blur"
                 sizes="(max-width: 1024px) 60vw, 300px"
               />
             </div>

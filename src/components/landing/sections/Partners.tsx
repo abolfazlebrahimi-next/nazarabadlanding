@@ -1,7 +1,3 @@
-"use client";
-
-import Image from "next/image";
-import type { StaticImageData } from "next/image";
 import { ArrowLeft, CircleCheck } from "lucide-react";
 import { Reveal } from "@/components/landing/ui/Reveal";
 import { PARTNERS, SELLER, COURIER } from "@/data/content";
@@ -18,7 +14,7 @@ interface PartnerCardProps {
   desc: string;
   points: string[];
   cta: string;
-  image: StaticImageData;
+  image: string;
   imageAlt: string;
   tone: "light" | "green";
   mirrored?: boolean;
@@ -66,11 +62,10 @@ function PartnerCard({
           </button>
         </div>
         <div className="partner-card__figure">
-          <Image
+          <img
             src={image}
             alt={imageAlt}
             loading="lazy"
-            placeholder="blur"
             sizes="(max-width: 900px) 52vw, 210px"
           />
         </div>

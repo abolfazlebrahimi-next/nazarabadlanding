@@ -1,5 +1,3 @@
-"use client";
-
 import { useId, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CircleHelp, Plus } from "lucide-react";

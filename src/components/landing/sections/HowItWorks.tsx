@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import { RevealGroup, RevealItem } from "@/components/landing/ui/Reveal";
 import { SectionHead } from "@/components/landing/ui/SectionHead";
 import { HOW } from "@/data/content";
@@ -46,11 +43,10 @@ export function HowItWorks() {
             <RevealItem key={step.title} className="how__cell" y={30}>
               <article className="step-card">
                 <div className="step-card__media">
-                  <Image
+                  <img
                     src={step.image}
                     alt={step.alt}
                     loading="lazy"
-                    placeholder="blur"
                     sizes="(max-width: 640px) 88vw, (max-width: 1024px) 40vw, 300px"
                     className="step-card__img"
                   />
