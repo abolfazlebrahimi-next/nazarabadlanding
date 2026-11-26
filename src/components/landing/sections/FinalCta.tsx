@@ -106,6 +106,8 @@ export function FinalCta() {
           <Reveal delay={0.12} className="waitlist__figure">
             <img
               src={customerImage}
+              width={760}
+              height={1013}
               alt="مشتری خوشحال نظرآباد شاپ با کیف‌های خرید"
               loading="lazy"
               sizes="(max-width: 900px) 60vw, 280px"

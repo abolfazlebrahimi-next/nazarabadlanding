@@ -31,6 +31,8 @@ export function CourierPartner() {
             <div className="courier__figure">
               <img
                 src={courierImage}
+                width={760}
+                height={1013}
                 alt="پیک موتوری نظرآباد شاپ با کلاه‌کاسه‌ی سبز و جعبه‌ی تحویل"
                 loading="lazy"
                 sizes="(max-width: 1024px) 78vw, 400px"

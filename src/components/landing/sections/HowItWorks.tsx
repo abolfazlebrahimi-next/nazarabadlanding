@@ -45,6 +45,8 @@ export function HowItWorks() {
                 <div className="step-card__media">
                   <img
                     src={step.image}
+                    width={800}
+                    height={800}
                     alt={step.alt}
                     loading="lazy"
                     sizes="(max-width: 640px) 88vw, (max-width: 1024px) 40vw, 300px"

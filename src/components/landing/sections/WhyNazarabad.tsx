@@ -28,6 +28,8 @@ export function WhyNazarabad() {
             <div className="why__figure">
               <img
                 src={benefitsImage}
+                width={1200}
+                height={686}
                 alt={WHY.imageAlt}
                 loading="lazy"
                 sizes="(max-width: 1024px) 92vw, 560px"

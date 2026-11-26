@@ -36,6 +36,8 @@ export function FeaturedProducts() {
                 <div className="product-card__media">
                   <img
                     src={product.image}
+                    width={760}
+                    height={760}
                     alt={product.alt}
                     loading="lazy"
                     sizes="(max-width: 640px) 46vw, (max-width: 1024px) 34vw, 250px"

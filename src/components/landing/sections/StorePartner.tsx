@@ -98,6 +98,8 @@ export function StorePartner() {
             <div className="store__figure">
               <img
                 src={ownerImage}
+                width={760}
+                height={1013}
                 alt="فروشنده‌ی نظرآباد شاپ با روپوش سبز در فروشگاه"
                 loading="lazy"
                 sizes="(max-width: 1024px) 60vw, 300px"

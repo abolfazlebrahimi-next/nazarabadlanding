@@ -64,6 +64,8 @@ function PartnerCard({
         <div className="partner-card__figure">
           <img
             src={image}
+            width={760}
+            height={1013}
             alt={imageAlt}
             loading="lazy"
             sizes="(max-width: 900px) 52vw, 210px"
