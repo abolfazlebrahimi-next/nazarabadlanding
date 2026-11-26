@@ -50,6 +50,16 @@
     <link rel="preload" href="/fonts/ShoorRounded-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
     <!--STRUCTURED_DATA-->
+    <!-- Without JavaScript, scroll-reveal wrappers would stay at opacity:0 -->
+    <noscript>
+      <style>
+        [style*="opacity:0;"],
+        [style$="opacity:0"] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body class="antialiased">
     <div id="root"></div>

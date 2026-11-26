@@ -1,5 +1,5 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import "./styles/globals.css";
 import "./styles/tokens.css";
 import "./styles/fonts.css";
@@ -9,8 +9,17 @@ import "./styles/sections.css";
 import "./styles/cta.css";
 import App from "./App";
 
-createRoot(document.getElementById("root")!).render(
+const container = document.getElementById("root")!;
+const tree = (
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 );
+
+// When the prerendered HTML is present, hydrate it in place (no second copy
+// of the content, no flash). Otherwise (e.g. `vite dev`) render from scratch.
+if (container.hasChildNodes()) {
+  hydrateRoot(container, tree);
+} else {
+  createRoot(container).render(tree);
+}
